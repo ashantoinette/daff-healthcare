@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" type="img/png" href="daff-logo.png" />
+
+    <title>Daffodil Healthcare</title>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- LEFT SIDE -->
+      <div class="left-panel">
+        <nav class="top-nav">
+          <div class="breadcrumb">
+            <div class="breadcrumb-dropdown">
+              <span class="crumb-main">Daffodil</span>
+              <span class="crumb-divider">›</span>
+
+              <div class="dropdown-wrapper">
+                <span class="crumb-page" id="breadcrumb-page">Home</span>
+
+                <div class="dropdown-menu">
+                  <div onclick="switchPage('dashboard', 'Home', event)">
+                    Home
+                  </div>
+                  <div
+                    onclick="switchPage('appointments', 'Appointment', event)"
+                  >
+                    Appointment
+                  </div>
+                  <div onclick="switchPage('patients', 'Patients', event)">
+                    Patients
+                  </div>
+                  <div onclick="switchPage('doctors', 'Doctors', event)">
+                    Doctors
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="greeting">
+            <h1 id="greeting-text">
+              Welcome. <span id="greeting-word">Good morning!</span>
+            </h1>
+          </div>
+
+          <div class="greet-divider"></div>
+        </nav>
+
+        <!-- SECTIONS -->
+        <div id="dashboard" class="section visible">
+          <div class="home-grid">
+            <!-- INNER LEFT -->
+            <div class="inner-left">
+              <!-- left content will go here -->
+            </div>
+
+            <!-- INNER MIDDLE -->
+            <div class="inner-middle">
+              <div id="rfidCard" class="rfid-card">
+                <div class="rfid-top-nav">
+                  <div class="rfid-top">
+                    <span class="rfid-title">Patient Overview</span>
+                    <div class="rfid-icon-div">
+                      <img src="/img/contactless.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rfid-main">
+                  <img
+                    id="dashPhoto"
+                    src="/img/no-pfp-webp.webp"
+                    class="rfid-photo"
+                  />
+
+                  <div class="rfid-details">
+                    <p id="dashName" class="rfid-name">Tap RFID</p>
+                    <p id="dashSex" class="rfid-sub">--</p>
+
+                    <div class="rfid-badges">
+                      <span id="dashWeight" class="rfid-badge">-- kg</span>
+                      <span id="dashBlood" class="rfid-badge">--</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rfid-bottom">
+                  <div class="rfid-box">
+                    <img src="/img/calendar.png" class="rfid-icon" />
+                    <div class="rfid-text">
+                      <p class="rfid-label">Last Visit</p>
+                      <p id="dashLastVisit" class="rfid-value">--</p>
+                    </div>
+                  </div>
+
+                  <div class="rfid-box">
+                    <img src="/img/department.png" class="rfid-icon" />
+                    <div class="rfid-text">
+                      <p class="rfid-label">Department</p>
+                      <p id="dashDepartment" class="rfid-value">--</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INNER RIGHT -->
+
+            <div class="inner-right">
+              <div class="stats-row">
+                <div class="stat-card">
+                  <div class="stat-top">
+                    <span class="stat-title">Patients</span>
+                    <div class="stat-icon">
+                      <img src="/img/patients.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="stat-bottom">
+                    <span class="stat-number">35</span>
+                    <span class="stat-arrow">›</span>
+                  </div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-top">
+                    <span class="stat-title">Doctors</span>
+                    <div class="stat-icon">
+                      <img src="/img/doctor.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="stat-bottom">
+                    <span class="stat-number">8</span>
+                    <span class="stat-arrow">›</span>
+                  </div>
+                </div>
+              </div>
+
+              <!--Card 3-->
+              <div class="card department-card">
+                <h3 class="dept-title">Departments</h3>
+
+                <div class="dept-content">
+                  <!-- Donut Chart -->
+                  <div class="donut-chart" id="deptDonut"></div>
+
+                  <!-- Labels -->
+                  <div class="dept-labels">
+                    <div class="dept-row">
+                      <span class="dot surgery"></span>
+                      <p>Surgery</p>
+                      <span class="dept-num">8</span>
+                    </div>
+
+                    <div class="dept-row">
+                      <span class="dot medicine"></span>
+                      <p>Medicine</p>
+                      <span class="dept-num">2</span>
+                    </div>
+
+                    <div class="dept-row">
+                      <span class="dot cardio"></span>
+                      <p>Cardiology</p>
+                      <span class="dept-num">5</span>
+                    </div>
+
+                    <div class="dept-row">
+                      <span class="dot radio"></span>
+                      <p>Radiology</p>
+                      <span class="dept-num">6</span>
+                    </div>
+
+                    <div class="dept-row">
+                      <span class="dot ortho"></span>
+                      <p>Orthopedics</p>
+                      <span class="dept-num">7</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPOINTMENTS SECTION -->
+        <div id="appointments" class="section hidden">
+          <div class="patients-wrapper">
+            <div class="patients-top">
+              <div class="patients-search-box">
+                <img src="/img/search.png" class="icon-img search-icon-img" />
+                <input
+                  type="text"
+                  id="appointmentSearch"
+                  placeholder="Search appointments..."
+                />
+              </div>
+
+              <button
+                class="add-patient-btn"
+                onclick="openAddAppointmentModal()"
+              >
+                + Add Appointment
+              </button>
+            </div>
+
+            <div class="patients-table card">
+              <div class="patients-header-row header-row">
+                <span>Patient</span>
+                <span>Doctor</span>
+                <span>Date</span>
+                <span>Time</span>
+                <span>Status</span>
+              </div>
+
+              <div id="appointmentsList">
+                <!-- Appointment rows will be injected here by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ADD APPOINTMENT MODAL -->
+        <div id="addAppointmentOverlay" class="modal-overlay hidden">
+          <div class="patient-modal">
+            <h2 class="add-title">Add Appointment</h2>
+
+            <div class="modal-section">
+              <label class="modal-label">Patient</label>
+              <select id="addApptPatient" class="modal-input">
+                <!-- Filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Doctor</label>
+              <select id="addApptDoctor" class="modal-input">
+                <!-- Filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Date</label>
+              <input type="date" id="addApptDate" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Time</label>
+              <input type="time" id="addApptTime" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Reason</label>
+              <textarea id="addApptReason" class="modal-textarea"></textarea>
+            </div>
+
+            <div class="modal-bottom">
+              <button class="cancel-btn" onclick="closeAddAppointment()">
+                Cancel
+              </button>
+              <button class="save-btn" onclick="saveNewAppointment()">
+                Add Appointment
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADD APPOINTMENT MODAL -->
+        <div id="addAppointmentOverlay" class="modal-overlay hidden">
+          <div class="patient-modal">
+            <h2 class="add-title">Add Appointment</h2>
+
+            <div class="modal-section">
+              <label class="modal-label">Patient</label>
+              <select id="addApptPatient" class="modal-input">
+                <!-- Filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Doctor</label>
+              <select id="addApptDoctor" class="modal-input">
+                <!-- Filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Date</label>
+              <input type="date" id="addApptDate" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Time</label>
+              <input type="time" id="addApptTime" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Reason</label>
+              <textarea id="addApptReason" class="modal-textarea"></textarea>
+            </div>
+
+            <div class="modal-bottom">
+              <button class="cancel-btn" onclick="closeAddAppointment()">
+                Cancel
+              </button>
+              <button class="save-btn" onclick="saveNewAppointment()">
+                Add Appointment
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- VIEW / EDIT APPOINTMENT MODAL -->
+        <div id="appointmentModalOverlay" class="modal-overlay hidden">
+          <div class="patient-modal">
+            <h2 class="modal-title">Appointment Details</h2>
+
+            <div class="modal-section">
+              <label class="modal-label">Patient</label>
+              <select id="apptPatient" class="modal-input">
+                <!-- filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Doctor</label>
+              <select id="apptDoctor" class="modal-input">
+                <!-- filled by JS -->
+              </select>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Date</label>
+              <input type="date" id="apptDate" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Time</label>
+              <input type="time" id="apptTime" class="modal-input" />
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Reason</label>
+              <textarea id="apptReason" class="modal-textarea"></textarea>
+            </div>
+
+            <div class="modal-section">
+              <label class="modal-label">Status</label>
+              <select id="apptStatus" class="modal-input">
+                <option>Pending</option>
+                <option>Completed</option>
+                <option>Cancelled</option>
+              </select>
+            </div>
+
+            <div class="modal-bottom" id="apptModalButtons">
+              <button class="cancel-btn" onclick="closeAppointmentModal()">
+                Cancel
+              </button>
+              <button class="save-btn" onclick="enterApptEditMode()">
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- DELETE APPOINTMENT CONFIRM -->
+        <div id="deleteAppointmentConfirmOverlay" class="modal-overlay hidden">
+          <div class="delete-modal">
+            <h3>Delete Appointment?</h3>
+            <p>This action cannot be undone.</p>
+
+            <div class="delete-modal-buttons">
+              <button
+                class="cancel-btn"
+                onclick="closeDeleteAppointmentConfirm()"
+              >
+                Cancel
+              </button>
+              <button class="delete-btn" onclick="confirmDeleteAppointment()">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="patients" class="section hidden">
+          <div class="patients-wrapper">
+            <!-- TOP BAR -->
+            <div class="patients-top">
+              <div class="patients-search-box">
+                <img src="/img/search.png" class="icon-img search-icon-img" />
+                <input
+                  type="text"
+                  id="patientSearch"
+                  placeholder="Search patients..."
+                />
+              </div>
+
+              <button class="add-patient-btn" onclick="openAddPatientModal()">
+                + Add Patient
+              </button>
+            </div>
+
+            <!-- PATIENT TABLE -->
+            <div class="patients-table">
+              <div class="patients-header-row">
+                <span>Name</span>
+                <span>Age</span>
+                <span>Contact</span>
+                <span>Address</span>
+                <span>Blood Type</span>
+                <span>Last Visit</span>
+              </div>
+
+              <div id="patientsList">
+                <!-- Rows inserted by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- PATIENT MODAL -->
+          <div id="patientModalOverlay" class="modal-overlay hidden">
+            <div class="patient-modal">
+              <div class="modal-top">
+                <img id="modalPhoto" class="modal-photo" src="/img/p1.jpg" />
+                <div class="modal-basic-info">
+                  <!-- FULL NAME -->
+                  <input
+                    id="modalName"
+                    class="modal-input big"
+                    placeholder="Full Name"
+                  />
+
+                  <!-- AGE / SEX / BLOOD / DEPT -->
+                  <div class="modal-row">
+                    <input
+                      id="modalAge"
+                      class="modal-input small"
+                      placeholder="Age"
+                    />
+
+                    <select id="modalSex" class="modal-input small">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+
+                    <select id="modalBlood" class="modal-input small">
+                      <option>A+</option>
+                      <option>A-</option>
+                      <option>B+</option>
+                      <option>B-</option>
+                      <option>AB+</option>
+                      <option>AB-</option>
+                      <option>O+</option>
+                      <option>O-</option>
+                    </select>
+
+                    <select id="modalDepartment" class="modal-input small">
+                      <option>Surgery</option>
+                      <option>Medicine</option>
+                      <option>Cardiology</option>
+                      <option>Radiology</option>
+                      <option>Orthopedics</option>
+                    </select>
+                  </div>
+
+                  <!-- CONTACT -->
+                  <input
+                    id="modalContact"
+                    class="modal-input"
+                    placeholder="Contact Number"
+                  />
+
+                  <!-- ADDRESS -->
+                  <input
+                    id="modalAddress"
+                    class="modal-input"
+                    placeholder="Address"
+                  />
+
+                  <input
+                    id="modalRFID"
+                    class="modal-input"
+                    placeholder="RFID Number"
+                  />
+
+                  <!-- LAST VISIT (DATE PICKER) -->
+                  <input id="modalLastVisit" type="date" class="modal-input" />
+                </div>
+              </div>
+
+              <div class="modal-section-title">Medical History</div>
+              <div class="modal-section">
+                <textarea
+                  id="modalPastIllness"
+                  class="modal-textarea"
+                  placeholder="Past illnesses / diagnoses"
+                ></textarea>
+                <textarea
+                  id="modalChronic"
+                  class="modal-textarea"
+                  placeholder="Chronic conditions"
+                ></textarea>
+                <textarea
+                  id="modalFamily"
+                  class="modal-textarea"
+                  placeholder="Family medical history"
+                ></textarea>
+                <textarea
+                  id="modalVaccination"
+                  class="modal-textarea"
+                  placeholder="Vaccination history"
+                ></textarea>
+                <textarea
+                  id="modalMedications"
+                  class="modal-textarea"
+                  placeholder="Current medications"
+                ></textarea>
+              </div>
+
+              <div class="modal-section-title">Vital Signs</div>
+              <div class="modal-vitals-grid">
+                <input
+                  id="modalBP"
+                  class="modal-input"
+                  placeholder="Blood Pressure"
+                />
+                <input
+                  id="modalHR"
+                  class="modal-input"
+                  placeholder="Heart Rate"
+                />
+                <input
+                  id="modalHeight"
+                  class="modal-input"
+                  placeholder="Height"
+                />
+                <input
+                  id="modalWeight"
+                  class="modal-input"
+                  placeholder="Weight"
+                />
+              </div>
+
+              <div class="modal-section-title">Clinical Notes</div>
+              <textarea
+                id="modalNotes"
+                class="modal-textarea large"
+                placeholder="Doctor's notes"
+              ></textarea>
+
+              <div class="modal-bottom" id="modalButtons">
+                <button class="cancel-btn" onclick="closePatientModal()">
+                  Cancel
+                </button>
+                <button
+                  class="save-btn"
+                  id="updateBtn"
+                  onclick="enterEditMode()"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="deleteConfirmOverlay" class="modal-overlay hidden">
+            <div class="delete-modal">
+              <h3>Delete Patient?</h3>
+              <p>
+                This action cannot be undone. Are you sure you want to delete
+                this patient?
+              </p>
+
+              <div class="delete-modal-buttons">
+                <button class="cancel-btn" onclick="closeDeleteConfirm()">
+                  Cancel
+                </button>
+                <button class="delete-btn" onclick="confirmDeletePatient()">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- ADD PATIENT MODAL -->
+          <div id="addPatientOverlay" class="modal-overlay hidden">
+            <div class="patient-modal">
+              <h2 class="add-title">Add New Patient</h2>
+
+              <div class="modal-top add-modal-top">
+                <div class="modal-basic-info">
+                  <input
+                    id="addName"
+                    class="modal-input big"
+                    placeholder="Full Name"
+                  />
+
+                  <div class="modal-row">
+                    <input
+                      id="addAge"
+                      class="modal-input small"
+                      placeholder="Age"
+                    />
+
+                    <select id="addSex" class="modal-input small">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+
+                    <select id="addBlood" class="modal-input small">
+                      <option>A+</option>
+                      <option>A-</option>
+                      <option>B+</option>
+                      <option>B-</option>
+                      <option>AB+</option>
+                      <option>AB-</option>
+                      <option>O+</option>
+                      <option>O-</option>
+                    </select>
+
+                    <select id="addDepartment" class="modal-input small">
+                      <option>Surgery</option>
+                      <option>Medicine</option>
+                      <option>Cardiology</option>
+                      <option>Radiology</option>
+                      <option>Orthopedics</option>
+                    </select>
+                  </div>
+
+                  <input
+                    id="addContact"
+                    class="modal-input"
+                    placeholder="Contact Number"
+                  />
+                  <input
+                    id="addAddress"
+                    class="modal-input"
+                    placeholder="Address"
+                  />
+                  <input
+                    id="addRFID"
+                    class="modal-input"
+                    placeholder="RFID Number"
+                  />
+                </div>
+              </div>
+
+              <div class="modal-bottom">
+                <button class="cancel-btn" onclick="closeAddPatient()">
+                  Cancel
+                </button>
+                <button class="save-btn" onclick="saveNewPatient()">
+                  Add Patient
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="doctors" class="section hidden">
+          <!-- DOCTORS PAGE -->
+          <div class="doctors-wrapper">
+            <div class="doctors-top">
+              <div class="doctors-search-box">
+                <img src="/img/search.png" class="icon-img search-icon-img" />
+                <input
+                  type="text"
+                  id="doctorSearch"
+                  placeholder="Search doctors..."
+                />
+              </div>
+
+              <button class="add-patient-btn" onclick="openAddDoctorModal()">
+                + Add Doctor
+              </button>
+            </div>
+
+            <div class="doctors-table card">
+              <div class="doctors-header-row header-row">
+                <span>Name</span>
+                <span>Age</span>
+                <span>Contact</span>
+                <span>Department</span>
+                <span>Schedule</span>
+                <span>Patients</span>
+              </div>
+
+              <div id="doctorsList">
+                <!-- injected by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- DOCTOR VIEW/EDIT MODAL -->
+          <div id="doctorModalOverlay" class="modal-overlay hidden">
+            <div class="patient-modal doctor-modal">
+              <div class="modal-top">
+                <img id="doctorPhoto" class="modal-photo" src="/img/re1.jpg" />
+                <div class="modal-basic-info">
+                  <input
+                    id="doctorName"
+                    class="modal-input big"
+                    placeholder="Full Name"
+                  />
+                  <div class="modal-row">
+                    <input
+                      id="doctorAge"
+                      class="modal-input small"
+                      placeholder="Age"
+                    />
+                    <select id="doctorSex" class="modal-input small">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <select id="doctorDepartment" class="modal-input small">
+                      <option>Surgery</option>
+                      <option>Medicine</option>
+                      <option>Cardiology</option>
+                      <option>Radiology</option>
+                      <option>Orthopedics</option>
+                    </select>
+                  </div>
+
+                  <input
+                    id="doctorContact"
+                    class="modal-input"
+                    placeholder="Contact Number"
+                  />
+                </div>
+              </div>
+
+              <div class="modal-section-title">Schedule (Mon — Sat)</div>
+              <div class="modal-section" id="doctorScheduleContainer">
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedMon"
+                    class="sched-checkbox"
+                  />
+                  Mon</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedTue"
+                    class="sched-checkbox"
+                  />
+                  Tue</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedWed"
+                    class="sched-checkbox"
+                  />
+                  Wed</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedThu"
+                    class="sched-checkbox"
+                  />
+                  Thu</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedFri"
+                    class="sched-checkbox"
+                  />
+                  Fri</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    id="schedSat"
+                    class="sched-checkbox"
+                  />
+                  Sat</label
+                >
+              </div>
+
+              <div class="modal-section-title">Patients under this doctor</div>
+              <div class="modal-section" id="doctorPatientsList">
+                <!-- auto-generated list -->
+              </div>
+
+              <div class="modal-bottom" id="doctorModalButtons">
+                <button class="cancel-btn" onclick="closeDoctorModal()">
+                  Cancel
+                </button>
+                <button
+                  class="save-btn"
+                  id="doctorUpdateBtn"
+                  onclick="enterDoctorEditMode()"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADD DOCTOR MODAL -->
+          <div id="addDoctorOverlay" class="modal-overlay hidden">
+            <div class="patient-modal doctor-modal">
+              <h2 class="add-title">Add Doctor</h2>
+              <div class="modal-top add-modal-top">
+                <div class="modal-basic-info">
+                  <input
+                    id="addDoctorName"
+                    class="modal-input big"
+                    placeholder="Full Name"
+                  />
+                  <div class="modal-row">
+                    <input
+                      id="addDoctorAge"
+                      class="modal-input small"
+                      placeholder="Age"
+                    />
+                    <select id="addDoctorSex" class="modal-input small">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <select id="addDoctorDepartment" class="modal-input small">
+                      <option>Surgery</option>
+                      <option>Medicine</option>
+                      <option>Cardiology</option>
+                      <option>Radiology</option>
+                      <option>Orthopedics</option>
+                    </select>
+                  </div>
+                  <input
+                    id="addDoctorContact"
+                    class="modal-input"
+                    placeholder="Contact Number"
+                  />
+                </div>
+              </div>
+
+              <div class="modal-section-title">
+                Schedule (check working days)
+              </div>
+              <div class="modal-section add-doctor-schedule">
+                <label><input type="checkbox" id="addSchedMon" /> Mon</label>
+                <label><input type="checkbox" id="addSchedTue" /> Tue</label>
+                <label><input type="checkbox" id="addSchedWed" /> Wed</label>
+                <label><input type="checkbox" id="addSchedThu" /> Thu</label>
+                <label><input type="checkbox" id="addSchedFri" /> Fri</label>
+                <label><input type="checkbox" id="addSchedSat" /> Sat</label>
+              </div>
+
+              <div class="modal-bottom">
+                <button class="cancel-btn" onclick="closeAddDoctor()">
+                  Cancel
+                </button>
+                <button class="save-btn" onclick="saveNewDoctor()">
+                  Add Doctor
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DOCTOR DELETE CONFIRM -->
+          <div id="deleteDoctorConfirmOverlay" class="modal-overlay hidden">
+            <div class="delete-modal">
+              <h3>Delete Doctor?</h3>
+              <p>
+                This action cannot be undone. Are you sure you want to delete
+                this doctor?
+              </p>
+              <div class="delete-modal-buttons">
+                <button class="cancel-btn" onclick="closeDeleteDoctorConfirm()">
+                  Cancel
+                </button>
+                <button class="delete-btn" onclick="confirmDeleteDoctor()">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END LEFT PANEL -->
+
+      <!-- RIGHT SIDE -->
+      <div class="right-panel">
+        <div class="right-top">
+          <div class="search-box">
+            <img src="/img/search.png" class="icon-img search-icon-img" />
+            <input type="text" placeholder="Search..." />
+          </div>
+
+          <div class="notification">
+            <img src="/img/bell.png" class="icon-img notification-icon-img" />
+          </div>
+
+          <div class="avatar">
+            <img src="/img/daffodil-avatar.jpg" class="avatar-img" />
+          </div>
+        </div>
+
+        <div>
+          <!-- Doctor's Schedule -->
+          <div class="doctor-section">
+            <div class="doctor-header">
+              <h3>Doctor's Schedule</h3>
+              <span class="see-all">See all</span>
+            </div>
+
+            <div class="doctor-list">
+              <div class="doctor-card">
+                <img src="/img/re1.jpg" class="doctor-img" />
+                <div class="doc-details">
+                  <p class="doc-name">Dr. Isabella Marcelline</p>
+                  <p class="doc-specialty">Cardiology</p>
+                </div>
+                <span class="status available">Available</span>
+              </div>
+
+              <div class="doctor-card">
+                <img src="/img/re2.jpg" class="doctor-img" />
+                <div class="doc-details">
+                  <p class="doc-name">Dr. Seraphina Lorette</p>
+                  <p class="doc-specialty">Surgery</p>
+                </div>
+                <span class="status unavailable">Unavailable</span>
+              </div>
+
+              <div class="doctor-card">
+                <img src="/img/re3.jpg" class="doctor-img" />
+                <div class="doc-details">
+                  <p class="doc-name">Dr. Antoinette Cariño</p>
+                  <p class="doc-specialty">Medicine</p>
+                </div>
+                <span class="status available">Available</span>
+              </div>
+
+              <div class="doctor-card">
+                <img src="/img/re4.jpg" class="doctor-img" />
+                <div class="doc-details">
+                  <p class="doc-name">Dr. Adria Bellamonte</p>
+                  <p class="doc-specialty">Pediatrics</p>
+                </div>
+                <span class="status available">Available</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="visits-section">
+            <div class="visits-header">
+              <h3>Patients Today</h3>
+              <span class="see-all">See all</span>
+            </div>
+
+            <div class="visits-container">
+              <div class="visit-row">
+                <img src="/img/p1.jpg" class="visit-img" />
+                <div class="visit-info">
+                  <p class="visit-name">Adrienne Ligaya</p>
+                  <p class="visit-department">Medicine</p>
+                </div>
+                <div class="visit-meta">
+                  <p class="visit-today">Today</p>
+                  <p class="visit-time">8:44</p>
+                </div>
+              </div>
+
+              <div class="visit-row">
+                <img src="/img/p2.jpg" class="visit-img" />
+                <div class="visit-info">
+                  <p class="visit-name">Santiago Villareal</p>
+                  <p class="visit-department">Cardiology</p>
+                </div>
+                <div class="visit-meta">
+                  <p class="visit-today">Today</p>
+                  <p class="visit-time">9:10</p>
+                </div>
+              </div>
+
+              <div class="visit-row">
+                <img src="/img/p3.jpg" class="visit-img" />
+                <div class="visit-info">
+                  <p class="visit-name">Rafael Reyes</p>
+                  <p class="visit-department">Cardiology</p>
+                </div>
+                <div class="visit-meta">
+                  <p class="visit-today">Today</p>
+                  <p class="visit-time">10:02</p>
+                </div>
+              </div>
+
+              <div class="visit-row">
+                <img src="/img/p4.jpg" class="visit-img" />
+                <div class="visit-info">
+                  <p class="visit-name">Rocky Liwanag</p>
+                  <p class="visit-department">Medicine</p>
+                </div>
+                <div class="visit-meta">
+                  <p class="visit-today">Today</p>
+                  <p class="visit-time">10:45</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END RIGHT PANEL -->
+    </div>
+    <!-- END LAYOUT -->
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
